@@ -1,0 +1,170 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.ecommerce:sb-ecom >------------------------
+[INFO] Building sb-ecom 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:4.0.6:run (default-cli) > test-compile @ sb-ecom >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ sb-ecom ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ sb-ecom ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ sb-ecom ---
+[INFO] skip non existing resourceDirectory D:\JAVA\sb-ecom\sb-ecom\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ sb-ecom ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:4.0.6:run (default-cli) < test-compile @ sb-ecom <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:4.0.6:run (default-cli) @ sb-ecom ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.6)
+
+2026-06-05T10:13:31.949+05:30  INFO 3292 --- [sb-ecom] [           main] c.ecommerce.project.SbEcomApplication    : Starting SbEcomApplication using Java 25 with PID 3292 (D:\JAVA\sb-ecom\sb-ecom\target\classes started by DELL in D:\JAVA\sb-ecom\sb-ecom)
+2026-06-05T10:13:31.956+05:30  INFO 3292 --- [sb-ecom] [           main] c.ecommerce.project.SbEcomApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-06-05T10:13:33.078+05:30  INFO 3292 --- [sb-ecom] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-05T10:13:33.175+05:30  INFO 3292 --- [sb-ecom] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 2 JPA repository interfaces.
+2026-06-05T10:13:34.085+05:30  INFO 3292 --- [sb-ecom] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-06-05T10:13:34.109+05:30  INFO 3292 --- [sb-ecom] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-05T10:13:34.110+05:30  INFO 3292 --- [sb-ecom] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-05T10:13:34.188+05:30  INFO 3292 --- [sb-ecom] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2133 ms
+2026-06-05T10:13:34.446+05:30  INFO 3292 --- [sb-ecom] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-05T10:13:34.510+05:30  INFO 3292 --- [sb-ecom] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-05T10:13:35.109+05:30  INFO 3292 --- [sb-ecom] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-05T10:13:35.146+05:30  INFO 3292 --- [sb-ecom] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-05T10:13:35.343+05:30  INFO 3292 --- [sb-ecom] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-06-05T10:13:35.346+05:30  INFO 3292 --- [sb-ecom] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-05T10:13:35.414+05:30  INFO 3292 --- [sb-ecom] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:testdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: TESTDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+Hibernate: 
+    create global temporary table HTE_product(quantity integer, rn_ integer not null, category_categoryId bigint, discount float(53), price float(53), productId bigint, specialPrice float(53), description varchar(255), image varchar(255), productName varchar(255), primary key (rn_)) transactional
+2026-06-05T10:13:36.562+05:30  INFO 3292 --- [sb-ecom] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    create table categories (
+        category_id bigint generated by default as identity,
+        category_name varchar(255) not null,
+        primary key (category_id)
+    )
+Hibernate: 
+    create table product (
+        product_id bigint not null,
+        description varchar(255),
+        discount float(53),
+        image varchar(255),
+        price float(53),
+        product_name varchar(255),
+        quantity integer,
+        special_price float(53),
+        category_id bigint,
+        primary key (product_id)
+    )
+Hibernate: 
+    create sequence product_seq start with 1 increment by 50
+Hibernate: 
+    alter table if exists product 
+       add constraint FKowomku74u72o6h8q0khj7id8q 
+       foreign key (category_id) 
+       references categories
+2026-06-05T10:13:36.641+05:30  INFO 3292 --- [sb-ecom] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-05T10:13:36.747+05:30  INFO 3292 --- [sb-ecom] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.modelmapper.internal.typetools.TypeResolver (file:/C:/Users/DELL/.m2/repository/org/modelmapper/modelmapper/3.2.4/modelmapper-3.2.4.jar)
+WARNING: Please consider reporting this to the maintainers of class org.modelmapper.internal.typetools.TypeResolver
+WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release
+2026-06-05T10:13:37.124+05:30  WARN 3292 --- [sb-ecom] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-05T10:13:37.627+05:30  INFO 3292 --- [sb-ecom] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-06-05T10:13:37.635+05:30  INFO 3292 --- [sb-ecom] [           main] c.ecommerce.project.SbEcomApplication    : Started SbEcomApplication in 6.357 seconds (process running for 6.971)
+2026-06-05T10:14:18.753+05:30  INFO 3292 --- [sb-ecom] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-05T10:14:18.756+05:30  INFO 3292 --- [sb-ecom] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-05T10:14:18.759+05:30  INFO 3292 --- [sb-ecom] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+Hibernate: 
+    select
+        c1_0.category_id,
+        c1_0.category_name 
+    from
+        categories c1_0 
+    where
+        c1_0.category_id=?
+Hibernate: 
+    select
+        c1_0.category_id,
+        c1_0.category_name 
+    from
+        categories c1_0 
+    where
+        c1_0.category_name=?
+Hibernate: 
+    insert 
+    into
+        categories
+        (category_name, category_id) 
+    values
+        (?, default)
+Hibernate: 
+    select
+        c1_0.category_id,
+        c1_0.category_name 
+    from
+        categories c1_0 
+    where
+        c1_0.category_id=?
+Hibernate: 
+    select
+        next value 
+    for
+        product_seq
+Hibernate: 
+    insert 
+    into
+        product
+        (category_id, description, discount, image, price, product_name, quantity, special_price, product_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        c1_0.category_id,
+        c1_0.category_name 
+    from
+        categories c1_0 
+    where
+        c1_0.category_id=?
+Hibernate: 
+    select
+        next value 
+    for
+        product_seq
+Hibernate: 
+    insert 
+    into
+        product
+        (category_id, description, discount, image, price, product_name, quantity, special_price, product_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-05T12:05:36.991+05:30  WARN 3292 --- [sb-ecom] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m30s161ms753µs100ns).
+2026-06-05T13:08:54.439+05:30  WARN 3292 --- [sb-ecom] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m17s173ms105µs900ns).
+2026-06-05T13:37:58.960+05:30  WARN 3292 --- [sb-ecom] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m4s378ms290µs200ns).
