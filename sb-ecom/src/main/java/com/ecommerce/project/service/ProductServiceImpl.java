@@ -190,7 +190,7 @@ public class ProductServiceImpl implements ProductService {
 
         productFromDb.setProductName(product.getProductName());
         
-        productFromDb.setProducImage(product.getImage());
+        productFromDb.setProducimage(product.getimage());
         productFromDb.setDescription(product.getDescription());
         productFromDb.setQuantity(product.getQuantity());
         productFromDb.setDiscount(product.getDiscount());
