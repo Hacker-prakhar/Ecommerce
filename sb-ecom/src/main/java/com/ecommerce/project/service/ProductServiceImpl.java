@@ -247,14 +247,25 @@ public class ProductServiceImpl implements ProductService {
         return modelMapper.map(updatedProduct, ProductDTO.class);
     }
 
-    private ProductResponse toProductResponse(Page<Product> pageProducts) {
-        List<ProductDTO> productDTOS = pageProducts.getContent().stream()
-                .map(product -> {
-                    ProductDTO productDTO = modelMapper.map(product, ProductDTO.class);
-                    productDTO.setImage(constructImageUrl(product.getImage())); // save with local host attached
-                    return productDTO;
-                })
-                .toList();
+  private ProductResponse toProductResponse(Page<Product> pageProducts) {
+    List<ProductDTO> productDTOS = pageProducts.getContent().stream()
+            .map(product -> {
+                ProductDTO productDTO = modelMapper.map(product, ProductDTO.class);
+
+                String image = product.getImage();
+                if (image != null && !image.startsWith("https")) {
+                    productDTO.setImage(constructImageUrl(image)); // prepend localhost
+                } else {
+                    productDTO.setImage(image); // keep as-is
+                }
+
+                return productDTO;
+            })
+            .toList();
+
+    return buildProductResponse(pageProducts, productDTOS);
+}
+
 
         ProductResponse productResponse = new ProductResponse();
         productResponse.setContent(productDTOS);
