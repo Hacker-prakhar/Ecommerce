@@ -37,7 +37,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private CartService cartService;
-
+@Autowired
+ImageService imageService;
     @Autowired
     private ProductRepository productRepository;
 
@@ -56,11 +57,11 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     AuthUtil authUtil;
 
-    @Value("${project.image}")
-    private String path;
+//    @Value("${project.image}")
+//    private String path;
 
-    @Value("${image.base.url}")
-    private String imageBaseUrl;
+//    @Value("${image.base.url}")
+//    private String imageBaseUrl;
 
     @Override
     public ProductDTO addProduct(Long categoryId, ProductDTO productDTO) {
@@ -124,9 +125,9 @@ public class ProductServiceImpl implements ProductService {
         return toProductResponse(pageProducts);
     }
 
-    private String constructImageUrl(String imageName) {
-        return imageBaseUrl.endsWith("/") ? imageBaseUrl + imageName : imageBaseUrl + "/" + imageName;
-    } // get url for image with local host
+//    private String constructImageUrl(String imageName) {
+//        return imageBaseUrl.endsWith("/") ? imageBaseUrl + imageName : imageBaseUrl + "/" + imageName;
+//    } // get url for image with local host
 
     @Override
     public ProductResponse searchByCategory(Long categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
@@ -238,7 +239,7 @@ public class ProductServiceImpl implements ProductService {
         Product productFromDb = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product", "productId", productId));
 
-        String fileName = fileService.uploadImage(path, image); // path is the folder name
+        String fileName =imageService.uploadImage(image);
         productFromDb.setImage(fileName);
 
         Product updatedProduct = productRepository.save(productFromDb);
@@ -249,7 +250,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDTO> productDTOS = pageProducts.getContent().stream()
                 .map(product -> {
                     ProductDTO productDTO = modelMapper.map(product, ProductDTO.class);
-                    productDTO.setImage(constructImageUrl(product.getImage())); // save with local host attached
+//                    productDTO.setImage(constructImageUrl(product.getImage())); // save with local host attached
                     return productDTO;
                 })
                 .toList();
