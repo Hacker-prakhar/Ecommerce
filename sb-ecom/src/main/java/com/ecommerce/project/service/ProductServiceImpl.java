@@ -190,8 +190,6 @@ ImageService imageService;
         Product product = modelMapper.map(productDTO, Product.class);
 
         productFromDb.setProductName(product.getProductName());
-        
-        productFromDb.setImage(product.getImage());
         productFromDb.setDescription(product.getDescription());
         productFromDb.setQuantity(product.getQuantity());
         productFromDb.setDiscount(product.getDiscount());
@@ -248,7 +246,6 @@ ImageService imageService;
         return modelMapper.map(updatedProduct, ProductDTO.class);
     }
 
-<<<<<<< HEAD
     private ProductResponse toProductResponse(Page<Product> pageProducts) {
         List<ProductDTO> productDTOS = pageProducts.getContent().stream()
                 .map(product -> {
@@ -257,39 +254,16 @@ ImageService imageService;
                     return productDTO;
                 })
                 .toList();
-=======
-  private ProductResponse toProductResponse(Page<Product> pageProducts) {
->>>>>>> a4beb52100151320726b0643d197e927d597abdc
 
-    List<ProductDTO> productDTOS = pageProducts.getContent().stream()
-            .map(product -> {
-
-                ProductDTO productDTO =
-                        modelMapper.map(product, ProductDTO.class);
-
-                String image = product.getImage();
-
-                if (image != null && !image.startsWith("https")) {
-                    productDTO.setImage(constructImageUrl(image));
-                } else {
-                    productDTO.setImage(image);
-                }
-
-                return productDTO;
-            })
-            .toList();
-
-    ProductResponse productResponse = new ProductResponse();
-
-    productResponse.setContent(productDTOS);
-    productResponse.setPageNumber(pageProducts.getNumber());
-    productResponse.setPageSize(pageProducts.getSize());
-    productResponse.setTotalElements(pageProducts.getTotalElements());
-    productResponse.setTotalPages(pageProducts.getTotalPages());
-    productResponse.setLastPage(pageProducts.isLast());
-
-    return productResponse;
-}
+        ProductResponse productResponse = new ProductResponse();
+        productResponse.setContent(productDTOS);
+        productResponse.setPageNumber(pageProducts.getNumber());
+        productResponse.setPageSize(pageProducts.getSize());
+        productResponse.setTotalElements(pageProducts.getTotalElements());
+        productResponse.setTotalPages(pageProducts.getTotalPages());
+        productResponse.setLastPage(pageProducts.isLast());
+        return productResponse;
+    }
 
     private Sort buildSort(String sortBy, String sortOrder) {
         String property = (sortBy == null || sortBy.isBlank()) ? "price" : sortBy;
